@@ -1,0 +1,44 @@
+create database bdogame;
+
+create table plataforma(
+id int not null auto_increment primary key,
+nombre varchar(20) not null,
+compania varchar(20) not null,
+tipo varchar(20) not null,
+icono varchar(100) not null
+);
+
+create table videojuegos (
+id int not null auto_increment primary key,
+nombre varchar(50) not null,
+genero varchar(50) not null,
+desarrollador varchar(50) not null,
+distribuidor varchar(50) not null,
+plataforma int not null,
+jugadores varchar(20) not null,
+caratula varchar(100) not null,
+completado tinyint not null,
+foreign key (plataforma) references plataforma (id)
+);
+
+create table usuarios (
+id int not null auto_increment primary key,
+nombre varchar(50) not null,
+password varchar(50) not null,
+email varchar(50) not null,
+permiso int not null default 0
+);
+
+<------------------------------>
+
+AL TENER LA TABLA DE plataforma RELACIONADA CON videojuegos ES NECESARIO METER ALGUNOS VALORES A MANO HASTA QUE EL PROGRAMA LO HAGA POR SÍ MISMO
+
+USAR EL CÓDIGO SIGUIENTE PARA RELLENAR plataforma:
+
+ALTER TABLE plataforma AUTO_INCREMENT = 1;
+
+INSERT INTO plataforma (nombre,compania,tipo,icono) VALUES ('PC', 'Microsoft', 'Sobremesa', 'iconosPlataformas/pc.png');
+
+INSERT INTO plataforma (nombre,compania,tipo,icono) VALUES ('PS4', 'Sony', 'Sobremesa', 'iconosPlataformas/ps4.png');
+
+INSERT INTO plataforma (nombre,compania,tipo,icono) VALUES ('XBoxOne', 'Microsoft', 'Sobremesa', 'iconosPlataformas/xbox.png');
